@@ -2,30 +2,24 @@ import 'package:flutter/material.dart';
 import '../models/item.dart';
 
 class ItemPage extends StatelessWidget {
-  final Item item;
-
-  const ItemPage({super.key, required this.item});
+  const ItemPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Ambil data yang dikirim dari HomePage
+    final item = ModalRoute.of(context)!.settings.arguments as Item;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(item.name),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Nama Barang: ${item.name}",
-              style: const TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              "Harga: Rp ${item.price}",
-              style: const TextStyle(fontSize: 18, color: Colors.blue),
-            ),
+            Text("Nama: ${item.name}", style: const TextStyle(fontSize: 24)),
+            const SizedBox(height: 12),
+            Text("Harga: Rp ${item.price}", style: const TextStyle(fontSize: 20)),
           ],
         ),
       ),
