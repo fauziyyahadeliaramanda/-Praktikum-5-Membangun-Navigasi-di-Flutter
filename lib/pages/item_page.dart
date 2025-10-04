@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
+import '../models/item.dart';
 
 class ItemPage extends StatelessWidget {
   const ItemPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final Item item = ModalRoute.of(context)!.settings.arguments as Item;
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Item Page"),
-      ),
+      appBar: AppBar(title: Text(item.name)),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text("Kembali ke Home Page"),
-        ),
+        child: Text("Harga: Rp ${item.price}"),
       ),
     );
   }
